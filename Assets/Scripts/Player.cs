@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 4f;
+    public GameObject mainCamera;
     private Rigidbody2D rigidbody2D;
     private Animator anim;
 
@@ -26,6 +27,19 @@ public class Player : MonoBehaviour
             temp.x = x;
             transform.localScale = temp;
             anim.SetBool("Dash", true);
+            if(transform.position.x>mainCamera.transform.position.x-4)
+            {
+                Vector3 cameraPos = mainCamera.transform.position;
+                cameraPos.x = transform.position.x + 4;
+                mainCamera.transform.position = cameraPos;
+            }
+
+            Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+            Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+            Vector2 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, min.x + 0.5f, max.x);
+            transform.position = pos;
+
         }
 
         else
