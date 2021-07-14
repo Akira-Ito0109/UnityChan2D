@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 		transform.position + transform.up * 1,
 		transform.position - transform.up * 0.05f,
 		groundLayer);
+		//Debug.DrawLine(transform.position + transform.up * 1,
+		//transform.position - transform.up * 0.05f,Color.green,1.0f);
 		if (!gameClear)
 		{
 			if (Input.GetKeyDown("space"))
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour
 			if (Input.GetKeyDown("left ctrl"))
 			{
 				anim.SetTrigger("Shot");
-				Instantiate(bullet, transform.position + new Vector3(0f, 1.2f, 0f), transform.rotation);
+				Instantiate(bullet, transform.position + new Vector3(0f, 2f, 0.5f), transform.rotation);
 			}
 			if (gameObject.transform.position.y < Camera.main.transform.position.y - 8)
 			{

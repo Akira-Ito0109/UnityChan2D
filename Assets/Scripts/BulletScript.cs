@@ -13,7 +13,7 @@ public class BulletScript : MonoBehaviour
 		Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
 		rigidbody2D.velocity = new Vector2(speed * player.transform.localScale.x, rigidbody2D.velocity.y);
 		Vector2 temp = transform.localScale;
-		temp.x = player.transform.localScale.x;
+		temp.x = player.transform.localScale.x*5;
 		transform.localScale = temp;
 		Destroy(gameObject, 5);
 	}
