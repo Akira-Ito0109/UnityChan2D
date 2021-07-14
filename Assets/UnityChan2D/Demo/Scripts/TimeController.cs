@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeController : MonoBehaviour
 {
@@ -42,6 +43,6 @@ public class TimeController : MonoBehaviour
 
         yield return new WaitForSeconds(3);
 
-        Application.LoadLevel(nextLevel);
+        SceneManager.LoadScene(nextLevel);
     }
 }

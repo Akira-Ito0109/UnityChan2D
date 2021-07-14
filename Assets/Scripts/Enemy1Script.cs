@@ -4,33 +4,47 @@ using UnityEngine;
 
 public class Enemy1Script : MonoBehaviour
 {
-	Rigidbody2D rigidbody2D;
+	Rigidbody2D rb2D;
 	public int speed = -3;
 	public GameObject explosion;
-	public GameObject item;
 	public int attackPoint = 10;
+	public GameObject item;
+
 	private LifeScript lifeScript;
+	private const string MAIN_CAMERA_TAG_NAME = "MainCamera";
+	private bool _isRendered = false;
+
 	void Start()
 	{
-		rigidbody2D = GetComponent<Rigidbody2D>();
+		rb2D = GetComponent<Rigidbody2D>();
 		lifeScript = GameObject.FindGameObjectWithTag("HP").GetComponent<LifeScript>();
-
 	}
 
 	void Update()
 	{
-		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+		if (_isRendered)
+		{
+			rb2D.velocity = new Vector2(speed, rb2D.velocity.y);
+		}
+		if (gameObject.transform.position.y < Camera.main.transform.position.y - 8 ||
+gameObject.transform.position.x < Camera.main.transform.position.x - 10)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag == "Bullet")
+		if (_isRendered)
 		{
-			Destroy(gameObject);
-			Instantiate(explosion, transform.position, transform.rotation);
-			if (Random.Range(0, 4) == 0)
+			if (col.tag == "Bullet")
 			{
-				Instantiate(item, transform.position, transform.rotation);
+				Destroy(gameObject);
+				Instantiate(explosion, transform.position, transform.rotation);
+				if (Random.Range(0, 4) == 0)
+				{
+					Instantiate(item, transform.position, transform.rotation);
+				}
 			}
 		}
 	}
@@ -39,6 +53,13 @@ public class Enemy1Script : MonoBehaviour
 		if (col.gameObject.tag == "UnityChan")
 		{
 			lifeScript.LifeDown(attackPoint);
+		}
+	}
+	void OnWillRenderObject()
+	{
+		if (Camera.current.tag == MAIN_CAMERA_TAG_NAME)
+		{
+			_isRendered = true;
 		}
 	}
 }
