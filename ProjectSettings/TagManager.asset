@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Enemy
   - HP
+  - ClearZone
   layers:
   - Default
   - TransparentFX

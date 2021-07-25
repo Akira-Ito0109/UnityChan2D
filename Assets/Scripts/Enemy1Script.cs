@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy1Script : MonoBehaviour
 {
-	Rigidbody2D rigidbody2D;
+	Rigidbody2D rb2D;
 	public int speed = -3;
 	public GameObject explosion;
 	public int attackPoint = 10;
@@ -16,7 +16,7 @@ public class Enemy1Script : MonoBehaviour
 
 	void Start()
 	{
-		rigidbody2D = GetComponent<Rigidbody2D>();
+		rb2D = GetComponent<Rigidbody2D>();
 		lifeScript = GameObject.FindGameObjectWithTag("HP").GetComponent<LifeScript>();
 	}
 
@@ -24,7 +24,7 @@ public class Enemy1Script : MonoBehaviour
 	{
 		if (_isRendered)
 		{
-			rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+			rb2D.velocity = new Vector2(speed, rb2D.velocity.y);
 		}
 	}
 

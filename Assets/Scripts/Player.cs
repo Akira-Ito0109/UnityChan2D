@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 		{
 			if (Input.GetKeyDown("left ctrl"))
 			{
-				anim.SetTrigger("Shot");
+				//anim.SetTrigger("Shot");
 				Instantiate(bullet, transform.position + new Vector3(0f, 2f, 0.5f), transform.rotation);
 			}
 			if (gameObject.transform.position.y < Camera.main.transform.position.y - 8)
