@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4523056889647895591}
   - component: {fileID: 4523056889647895613}
   m_Layer: 0
-  m_Name: Enemy1 1
+  m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,4 +184,4 @@ MonoBehaviour:
   speed: -3
   explosion: {fileID: 3854496712881693873, guid: 20a9d427447a43b4a8bff4b4b1b49c9d, type: 3}
   attackPoint: 10
-  item: {fileID: 0}
+  item: {fileID: 283992818209336542, guid: 3ac4d18e6eb2ce3458ccefc256ba7dfa, type: 3}
